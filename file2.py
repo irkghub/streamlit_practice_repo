@@ -1,6 +1,20 @@
-print("Welcome fellas to this Band Name Generator Game !!!!")
-print("Before that we'd like to know a few things about ya!")
-city = input("Which city were you born ?\n")
-pet_name = input("I guess you did have a pet, didn't you ?\n What did you use to call it ?\n")
+import streamlit as st
 
-print(f"Boom!!! Bang!!!\n{city}{pet_name} is here folks\nWhen\'s your next show ?")
+# Title of the app
+st.title("Band Name Generator Game!")
+
+# User input for city
+city = st.text_input("Which city were you born in?")
+
+# User input for pet name
+pet_name = st.text_input("Did you have a pet? What did you use to call it?")
+
+# Button to generate the band name
+if st.button("Generate Band Name"):
+    if city and pet_name:
+        # Generate the band name
+        band_name = f"{city} {pet_name} is here folks!"
+        st.success(band_name)
+        st.write("When's your next show?")
+    else:
+        st.error("Please enter both your city and pet's name!")
